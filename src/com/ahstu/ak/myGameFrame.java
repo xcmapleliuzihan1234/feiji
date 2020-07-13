@@ -9,6 +9,15 @@ import java.awt.event.WindowEvent;
 游戏主窗口
  */
 public class myGameFrame extends Frame {
+    Image plane=gameUtil.getImages("image/plane.jpg");
+    Image bg=gameUtil.getImages("image/bg.jpg");
+
+    @Override
+    public void paint(Graphics g) {
+        g.drawImage(bg,0,0,500,500,null);
+        g.drawImage(plane,240,400,32,33,null);
+    }
+
     //初始化窗口
     public void launchFrame(){
         this.setTitle("创创打飞机");
