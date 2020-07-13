@@ -11,15 +11,15 @@ import java.awt.event.WindowEvent;
 public class myGameFrame extends Frame {
     Image plane=gameUtil.getImages("image/plane.jpg");
     Image bg=gameUtil.getImages("image/bg.jpg");
-     int planex=240,planey=400;
      int count=0;
+     GameObject plane2=new GameObject(plane,240,400,2,32,33);
     @Override
     public void paint(Graphics g) {//g相当于画笔
         System.out.println("绘制窗口次数"+count);
         count++;
-        g.drawImage(bg,0,0,Constant.GAME_WIDTH,Constant.GAME_HIGHT,null);
-        g.drawImage(plane,planex,planey,32,33,null);
-       planex+=2;planey-=2;
+        g.drawImage(bg,0,0,Constant.GAME_WIDTH,Constant.GAME_HEIGHT,null);
+
+     plane2.drawMyself(g);
     }
 
     //初始化窗口
@@ -36,7 +36,7 @@ public class myGameFrame extends Frame {
         });
         new paintThread().start();
     }
-     class paintThread extends Thread{//添加双缓冲技术
+     class paintThread extends Thread{//添加双缓冲技术，解决屏幕闪烁
         public void run(){
             while (true){
                 repaint();
@@ -51,7 +51,7 @@ public class myGameFrame extends Frame {
     private Image offScreenImage = null;
     public void update(Graphics g){
         if(offScreenImage==null)
-            offScreenImage = this.createImage(Constant.GAME_WIDTH,Constant.GAME_HIGHT);
+            offScreenImage = this.createImage(Constant.GAME_WIDTH,Constant.GAME_HEIGHT);
         Graphics goff = offScreenImage.getGraphics();
         paint(goff);
         g.drawImage(offScreenImage,0,0,null);
@@ -60,4 +60,5 @@ public class myGameFrame extends Frame {
         myGameFrame gameFrame=new myGameFrame();
         gameFrame.launchFrame();
     }
+
 }
