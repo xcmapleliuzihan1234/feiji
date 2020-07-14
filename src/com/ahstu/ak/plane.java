@@ -7,7 +7,7 @@ public class plane extends GameObject {
     public void drawMyself(Graphics g) {
         super.drawMyself(g);
         //·É»ú·ÉÐÐµÄ¹ì¼£
-        x+=speed;
+     //   x+=speed;
     }
 
     public plane(Image img, int x, int y, int speed) {
