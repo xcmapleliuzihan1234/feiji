@@ -7,16 +7,7 @@ public class GameObject {
     int x,y;
     int speed;
     int width,height;
-/*
-    public GameObject(Image img, int x, int y, int speed, int width, int height) {
-        this.img = img;
-        this.x = x;
-        this.y = y;
-        this.speed = speed;
-        this.width = width;
-        this.height = height;
-    }
-*/
+
     public GameObject(Image img, int x, int y, int speed) {
         this.img = img;
         this.x = x;

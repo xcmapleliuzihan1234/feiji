@@ -15,24 +15,16 @@ public class myGameFrame extends Frame {
     Image bg=gameUtil.getImages("image/bg.jpg");
 
      plane p1=new plane(planeImg,240,400,10);
-     boolean left,right,up,down;
+
     @Override
     public void paint(Graphics g) {//g相当于画笔
         g.drawImage(bg,0,0,Constant.GAME_WIDTH,Constant.GAME_HEIGHT,null);
         p1.drawMyself(g);
-        if(left){
-            p1.x-=p1.speed;
-        }if(right){
-            p1.x+=p1.speed;
-        }if(up){
-            p1.y-=p1.speed;
-        }if(down){
-            p1.y+=p1.speed;
-        }
+
     }
     //初始化窗口
     public void launchFrame(){
-        this.setTitle("创创打飞机");
+        this.setTitle("飞机大战");
         setVisible(true);//窗口是否可见
         setSize(500,500);//窗口大小
         setLocation(400,150);//窗口位置
@@ -62,30 +54,12 @@ public class myGameFrame extends Frame {
     class keyMonitor extends KeyAdapter{
         @Override
         public void keyPressed(KeyEvent e) {
-            System.out.println("按下"+e.getKeyCode());
-            if(e.getKeyCode()==KeyEvent.VK_LEFT){
-                left=true;
-            } if(e.getKeyCode()==KeyEvent.VK_RIGHT){
-                right=true;
-            } if(e.getKeyCode()==KeyEvent.VK_UP){
-                up=true;
-            } if(e.getKeyCode()==KeyEvent.VK_DOWN){
-                down=true;
-            }
+            p1.addDirction(e);
         }
 
         @Override
         public void keyReleased(KeyEvent e) {
-            System.out.println("抬起"+e.getKeyCode());
-            if(e.getKeyCode()==KeyEvent.VK_LEFT){
-                left=false;
-            } if(e.getKeyCode()==KeyEvent.VK_RIGHT){
-                right=false;
-            } if(e.getKeyCode()==KeyEvent.VK_UP){
-                up=false;
-            } if(e.getKeyCode()==KeyEvent.VK_DOWN){
-                down=false;
-            }
+            p1.minusDirction(e);
         }
     }
     private Image offScreenImage = null;
