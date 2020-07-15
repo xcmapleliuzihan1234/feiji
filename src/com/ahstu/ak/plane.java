@@ -2,20 +2,25 @@ package com.ahstu.ak;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-
 public class plane extends GameObject {
     boolean left,right,up,down;
+    boolean live=true;
     @Override
     public void drawMyself(Graphics g) {
-        super.drawMyself(g);
-        if(left){
-            x-=speed;
-        }if(right){
-            x+=speed;
-        }if(up){
-            y-=speed;
-        }if(down){
-            y+=speed;
+        if (live) {
+            super.drawMyself(g);
+            if (left) {
+                x -= speed;
+            }
+            if (right) {
+                x += speed;
+            }
+            if (up) {
+                y -= speed;
+            }
+            if (down) {
+                y += speed;
+            }
         }
         //·É»ú·ÉÐÐµÄ¹ì¼£
      //   x+=speed;
